@@ -14,7 +14,7 @@ pipeline {
         CENTRAL_REPO = "amine_maven_central"
         NEXUSIP = "18.134.210.152"
         NEXUSPORT = "8081"
-	    NEXUL_GRP_REPO = "amine-maven-group"
+	    NEXUS_GRP_REPO = "amine-maven-group"
         NEXUS_LOGIN = "nexuslogin"
         ARTVERSION = "${env.BUILD_ID}"
     }
