@@ -16,7 +16,8 @@ pipeline {
         NEXUSPORT = "8081"
         NEXUS_GRP_REPO = "amine-maven-group"
         NEXUS_LOGIN = "nexuslogin"
-        ARTVERSION = "${env.BUILD_ID}"
+        SONARSERVER = "sonarserver"
+        SONARSCANNER = "sonarscanner"
     }
 	
     stages{
@@ -53,6 +54,29 @@ pipeline {
                     echo 'Generated Analysis Result'
                 }
             }
+        }
+        stage('CODE ANALYSIS with SONARQUBE') {
+          
+		  environment {
+             scannerHome = tool "${SONARSCANNER}"
+          }
+
+          steps {
+            withSonarQubeEnv("${SONARSERVER}") {
+               sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=amine \
+                   -Dsonar.projectName=amine-repo \
+                   -Dsonar.projectVersion=1.0 \
+                   -Dsonar.sources=src/ \
+                   -Dsonar.java.binaries=target/test-classes/com/visualpathit/account/controllerTest/ \
+                   -Dsonar.junit.reportsPath=target/surefire-reports/ \
+                   -Dsonar.jacoco.reportsPath=target/jacoco.exec \
+                   -Dsonar.java.checkstyle.reportPaths=target/checkstyle-result.xml'''
+            }
+
+            timeout(time: 10, unit: 'MINUTES') {
+               waitForQualityGate abortPipeline: true
+            }
+          }
         }
     }
     
