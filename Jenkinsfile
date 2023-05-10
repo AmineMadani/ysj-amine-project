@@ -11,7 +11,7 @@ pipeline {
         NEXUS_PASS = 'admin'
         RELEASE_REPO = 'amine-release'
         CENTRAL_REPO = 'amine_maven_central'
-        NEXUSIP = '18.134.210.152'
+        NEXUSIP = '3.8.157.20'
         NEXUSPORT = '8081'
         NEXUS_GRP_REPO = 'amine-maven-group'
         NEXUS_LOGIN = 'nexuslogin'
