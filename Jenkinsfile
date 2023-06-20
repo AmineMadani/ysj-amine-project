@@ -15,7 +15,7 @@ pipeline {
         NEXUS_PASS = 'admin'
         RELEASE_REPO = 'amine-release'
         CENTRAL_REPO = 'amine_maven_central'
-        NEXUSIP = '3.8.198.213'
+        NEXUSIP = '3.8.159.50'
         NEXUSPORT = '8081'
         NEXUS_GRP_REPO = 'amine-maven-group'
         NEXUS_LOGIN = 'nexuslogin'
@@ -114,7 +114,7 @@ pipeline {
                 extraVars : [
                     USER: "admin",
                     PASS: "admin",
-                    nexusip: "3.8.198.213",
+                    nexusip: "3.8.159.50",
                     reponame: "amine-release",
                     groupid: "QA",
                     time: "${env.BUILD_TIMESTAMP}",
