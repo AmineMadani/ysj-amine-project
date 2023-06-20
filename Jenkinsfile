@@ -101,6 +101,31 @@ pipeline {
             )
                     }
         }
+
+        stage('Ansible Deploy to staging') {
+            steps {
+                ansiblePlaybook([
+                inventory : 'ansible/stage.inventory',
+                playbook : 'ansible/site.yml',
+                installation : 'ansible',
+                colorized : true,
+                credentialsId : 'applogin',
+                disableHostKeyChecking: true,
+                extraVars : [
+                    USER: "admin",
+                    PASS: "admin",
+                    nexusip: "13.42.6.232"
+                    reponame: "amine-release",
+                    groupid: "QA",
+                    time: "${env.BUILD_TIMESTAMP}",
+                    build: "${env.BUILD_ID}",
+                    artifactid: "amine",
+                    amine_version: "amine-${env.BUILD_ID}-${env.BUILD_TIMESTAMP}.war"
+
+                ]
+                ])
+            }
+        }
     }
     post {
         always {
