@@ -114,7 +114,7 @@ pipeline {
                 extraVars : [
                     USER: "admin",
                     PASS: "admin",
-                    nexusip: "13.42.6.232"
+                    nexusip: "13.42.6.232",
                     reponame: "amine-release",
                     groupid: "QA",
                     time: "${env.BUILD_TIMESTAMP}",
