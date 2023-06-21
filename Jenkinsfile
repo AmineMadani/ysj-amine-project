@@ -5,11 +5,6 @@ def COLOR_MAP = [
 pipeline {
     agent any
     
-
-    environment {
-        
-    }
-
     stages {        
         stage('Setup parameters') {
             steps {
@@ -28,6 +23,7 @@ pipeline {
                     ])
                 }
                 
+        }
         }
 
         stage('Ansible Deploy to Production') {
