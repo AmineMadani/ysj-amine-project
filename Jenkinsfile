@@ -10,7 +10,8 @@ pipeline {
         
     }
 
-    stages {
+    stages 
+    {
         
         stage('Setup Parameters') {
             steps {
@@ -65,4 +66,5 @@ pipeline {
         }
     }
 
+}
 }
