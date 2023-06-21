@@ -44,7 +44,7 @@ pipeline {
                     time: "${env.TIME}",
                     build: "${env.BUILD}",
                     artifactid: "amine",
-                    amine_version: "amine-${env.BUILD}-${env.TIMES}.war"
+                    amine_version: "amine-${env.BUILD}-${env.TIME}.war"
 
                 ]
                 ])
