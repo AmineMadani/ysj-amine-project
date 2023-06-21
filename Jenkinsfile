@@ -10,10 +10,8 @@ pipeline {
         
     }
 
-    stages 
-    {
-        
-        stage('Setup Parameters') {
+    stages {        
+        stage('Setup parameters') {
             steps {
                 script {
                     properties([
@@ -57,6 +55,7 @@ pipeline {
             }
         }
     }
+    }
     post {
         always {
             echo 'Slack Notifications.'
@@ -66,5 +65,5 @@ pipeline {
         }
     }
 
-}
+
 }
